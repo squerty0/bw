@@ -1,0 +1,12 @@
+{
+  "name": "BW Helper",
+  "version": "1.0",
+  "description": "BloodWars Helper Tool",
+  "permissions": ["tabs", "*://*.bloodwars.interia.pl/*"],
+  "content_scripts": [{
+    "js": ["data.js", "background.js"],
+    "css": ["bw.css"],
+    "matches": ["*://*.bloodwars.interia.pl/*"]
+  }],
+  "manifest_version": 2
+}

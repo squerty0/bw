@@ -1,0 +1,29 @@
+.tier0, .tier1{
+    background-color: rgba(252, 0, 0, 0.25) !important;
+}
+
+.tier2{
+    background-color: rgba(255, 39, 39, 0.124) !important;
+}
+
+.tier3{
+
+    background-color:rgba(225, 255, 157, 0.25) !important;
+}
+
+.tier4{
+
+    background-color: rgba(39, 255, 75, 0.25) !important;
+}
+
+.tier5{
+    background-color: rgba(212, 42, 255, 0.25) !important;
+}
+
+.td.itemshop {
+    background: none !important;
+}
+
+.item .even{
+    background: none !important;
+}
