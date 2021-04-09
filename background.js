@@ -25,28 +25,49 @@ function processItem(item, bases, prefixes, sufixes){
 }
 
 
+window.addEventListener("load", function(){
 
-var moreButton = document.querySelector("#loadArmoryItemsButton");
+            var moreButton = document.querySelector("#loadArmoryItemsButton");
 
-if(moreButton) moreButton.click();
+            if(moreButton) moreButton.click();
 
-
-setTimeout( function() {
-          var items = document.querySelectorAll(".item");
-
-          for(var i = 0; i < items.length; i++){
-            var item = items[i].querySelector(".item-link");
-
-            if(processItem(item, helmetBases, helmetPrefixes, helmetSufixes)) continue;
-            if(processItem(item, armourBases, armourPrefixes, armourSufixes)) continue;
-            if(processItem(item, pantsBases, pantsPrefixes, pantsSufixes)) continue;
-            if(processItem(item, oneHandWeaponBases, oneHandWeaponPrefixes, oneHandWeaponSufixes)) continue;
+            var spinningWheelOfDeath = document.querySelector("#loadAjaxStockItemsIcon");
 
 
-          }
-}, 500);
+
+            if(spinningWheelOfDeath){
+
+                      spinningWheelOfDeath.classList.remove("hidden");
+                      var intervalId = setInterval(intervalFunc, 1000);
+                      var intervalCount = 0;
 
 
+                      function intervalFunc(){
+                        console.log("loop" + intervalCount);
+                        if(intervalCount++ >= 10) clearInterval(intervalId);
+                        if(!spinningWheelOfDeath.classList.contains("hidden")) return;
+
+
+                        var itemsOld = document.querySelectorAll(".item");
+                        var itemsAwakening = document.querySelectorAll(".armory_playerItemsDetail");
+                        var items = itemsOld.length > 0 ? itemsOld : itemsAwakening.length > 0 ? itemsAwakening : [];
+
+                        for(var i = 0; i < items.length; i++){
+                          var item = items[i].querySelector(".item-link");
+
+                          if(processItem(item, helmetBases, helmetPrefixes, helmetSufixes)) continue;
+                          if(processItem(item, armourBases, armourPrefixes, armourSufixes)) continue;
+                          if(processItem(item, pantsBases, pantsPrefixes, pantsSufixes)) continue;
+                          if(processItem(item, oneHandWeaponBases, oneHandWeaponPrefixes, oneHandWeaponSufixes)) continue;
+                        }
+                        
+                        clearInterval(intervalId);
+
+                      }
+
+            }
+
+});
 
 
 
